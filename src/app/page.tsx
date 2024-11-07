@@ -12,7 +12,7 @@ interface Task {
 
 export default function Home() {
   
-  const [loading , setLoading] = useState<Boolean>(false);
+  const [loading , setLoading] = useState<boolean>(false);
 
   const task: Task = {
     id: 1,
