@@ -22,7 +22,7 @@ export async function DELETE(request: Request) {
     })
 
     return NextResponse.json({ success: true }, { status: 200 })
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: 'Failed to delete todo' },
       { status: 500 }

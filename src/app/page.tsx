@@ -1,13 +1,13 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import { LoaderPinwheel, TrashIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios"
 
 
 interface Task {
   id: number,
-  content: String
+  content: string
 }
 
 export default function Home() {
@@ -63,19 +63,19 @@ export default function Home() {
     }
   }
   
-  const fetchTodos = async () => {
+  const fetchTodos = useCallback(async () => {
     try {
       const todos = await gettodo()
       setTask(todos)
     } finally {
       setLoading(false)
     }
-  }
+  }, []);
 
   useEffect(() => {
     setLoading(true)
     fetchTodos()
-  }, [])
+  }, [fetchTodos])
 
   return (
     <>
