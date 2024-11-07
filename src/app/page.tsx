@@ -44,7 +44,7 @@ export default function Home() {
     setdata(e.target.value);
   }
 
-  const deleteTaks = async (id: Number) => {
+  const deleteTaks = async (id: number) => {
     try {
       await axios.delete(`/api/deletetodo?id=${id}`)
       setTask((prev) => prev.filter(task => task.id != id))
