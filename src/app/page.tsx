@@ -11,12 +11,12 @@ interface Task {
 }
 
 export default function Home() {
-  
-  const [loading , setLoading] = useState<boolean>(false);
-  
+
+  const [loading, setLoading] = useState<boolean>(false);
+
   const [tasks, setTask] = useState<Task[]>([])
 
-  const [taskdata,setdata] =  useState<string>("");
+  const [taskdata, setdata] = useState<string>("");
 
   const handleClick = async () => {
     const newId = Math.floor(Math.random() * 10000)
@@ -35,7 +35,7 @@ export default function Home() {
     }
   }
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setdata(e.target.value);
   }
 
@@ -57,7 +57,7 @@ export default function Home() {
       return []
     }
   }
-  
+
   const fetchTodos = useCallback(async () => {
     try {
       const todos = await gettodo()
@@ -74,7 +74,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col items-center min-h-screen justify-center p-4">
+      <div className="flex flex-col items-center min-h-screen mt-48 p-4">
         <div className="w-full max-w-xl flex gap-2 p-5">
           <input
             type="text"
@@ -92,19 +92,27 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-3 w-full items-center px-4">
           {loading ? (
-            <div className="flex items-center justify-center">
+            <div className="flex items-center">
               <LoaderPinwheel className="animate-spin h-8 w-8" />
             </div>
           ) : (
-            tasks.map((data)=>{return(
-              <div key={data.id} className="flex gap-5 h-max w-full max-w-xl py-3 text-black font-bold border-2 border-black rounded-none px-4 sm:px-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 justify-between">
-                <h2 className="break-words flex-1">{data.content}</h2>
-                <button onClick={()=>{deleteTaks(data.id)}} className="flex-shrink-0">
-                  <TrashIcon className="hover:text-red-500 transition-all duration-300"/>
-                </button>
-              </div>
-            )}))}
+            tasks.map((data) => {
+              return (
+                <div key={data.id} className="flex gap-5 h-max w-full max-w-xl py-3 text-black font-bold border-2 border-black rounded-none px-4 sm:px-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 justify-between bg-white">
+                  <h2 className="break-words flex-1">{data.content}</h2>
+                  <button onClick={() => { deleteTaks(data.id) }} className="flex-shrink-0">
+                    <TrashIcon className="hover:text-red-500 transition-all duration-300" />
+                  </button>
+                </div>
+              )
+            }))}
         </div>
+       
+      </div>
+
+      <div className="flex flex-col items-center -translate-y-64">
+            <h2>Made by: </h2>
+            Anurag Maurya
       </div>
     </>
   );
