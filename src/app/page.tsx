@@ -13,12 +13,7 @@ interface Task {
 export default function Home() {
   
   const [loading , setLoading] = useState<boolean>(false);
-
-  const task: Task = {
-    id: 1,
-    content: "I can not find what to write here.. so imagine I wrote some good stuff."
-  }
-
+  
   const [tasks, setTask] = useState<Task[]>([])
 
   const [taskdata,setdata] =  useState<string>("");
