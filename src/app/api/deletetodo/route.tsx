@@ -22,9 +22,9 @@ export async function DELETE(request: Request) {
     })
 
     return NextResponse.json({ success: true }, { status: 200 })
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to delete todo' },
+      { error: error },
       { status: 500 }
     )
   }

@@ -16,9 +16,9 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json(todo, { status: 201 })
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to create todo' },
+      { error: error },
       { status: 500 }
     )
   }

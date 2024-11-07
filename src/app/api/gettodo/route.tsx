@@ -7,9 +7,9 @@ export async function GET() {
   try {
     const todos = await prisma.todo.findMany()
     return NextResponse.json(todos, { status: 200 })
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to fetch todos' },
+      { error: error },
       { status: 500 }
     )
   }
